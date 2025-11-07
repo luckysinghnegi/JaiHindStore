@@ -69,4 +69,5 @@ node_modules/
 .dataconnect
 
 # Long filename assets (temporary/placeholder files)
-src/Assets/"Logo design for 'Jai Hind Store' – a premium NCC accessories shop supplying uniforms, badges, belts and parade gear. Create a bold yet elegant emblem-style logo that evokes discipline, patriotism and quality. Use a.jpg
+src/Assets/*Logo design*.jpg
+src/Assets/*Jai Hind Store*.jpg

@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useEffect } from "react";
 import Card from "./Card.jsx";
 import "../styles/Home_style.css";
 import nccCapHome from "../Assets/NCC_Cap_home.jpg";
@@ -7,37 +7,87 @@ import nccDms from "../Assets/NCC_DMS.jpg";
 import nccTshit from "../Assets/NCC_T-shit.jpg";
 
 function Home() {
-  const [currentTestimonial, setCurrentTestimonial] = useState(0);
-  const [timeLeft, setTimeLeft] = useState({ hours: 23, minutes: 59, seconds: 59 });
+
+  const card_data = [
+    {
+      imageUrl: nccCapHome,
+      title: "NCC Cap",
+      subtitle: "Ncc Unisex-Adult Fabric Cap With Badge & Hackle (Red, Free Size)",
+      price: "₹280",
+      mrp: "₹300",
+      rating: 4.5,
+      ctaText: "Add to Cart"
+    },
+    {
+      imageUrl: nccBeltHome,
+      title: "NCC Leather Belt",
+      subtitle: "NCC Leather Belt for both Boys & Girls",
+      price: "₹380",
+      mrp: "₹400",
+      rating: 3,
+      ctaText: "Add to Cart"
+    },
+    {
+      imageUrl: nccTshit,
+      title: "NCC T-Shirt",
+      subtitle: "NCC Uniform T-Shirt- White for Boys & Girls",
+      price: "₹499",
+      mrp: "₹600",
+      rating: 4,
+      ctaText: "Add to Cart"
+    },
+    {
+      imageUrl: nccCapHome,
+      title: "NCC Cap",
+      subtitle: "Ncc Unisex-Adult Fabric Cap With Badge & Hackle (Red, Free Size)",
+      price: "₹280",
+      mrp: "₹300",
+      rating: 4.5,
+      ctaText: "Add to Cart"
+    },
+    {
+      imageUrl: nccBeltHome,
+      title: "NCC Leather Belt",
+      subtitle: "NCC Leather Belt for both Boys & Girls",
+      price: "₹380",
+      mrp: "₹400",
+      rating: 3,
+      ctaText: "Add to Cart"
+    },
+    {
+      imageUrl: nccDms,
+      title: "DMS",
+      subtitle: "NCC Uniform Boot for Boys & Girls",
+      price: "₹1000",
+      mrp: "₹1200",
+      rating: 3.5,
+      ctaText: "Add to Cart"
+    },
+    {
+      imageUrl: nccTshit,
+      title: "NCC T-Shirt",
+      subtitle: "NCC Uniform T-Shirt- White for Boys & Girls",
+      price: "₹499",
+      mrp: "₹600",
+      rating: 4,
+      ctaText: "Add to Cart"
+    },
+    {
+      imageUrl: nccCapHome,
+      title: "NCC Cap",
+      subtitle: "Ncc Unisex-Adult Fabric Cap With Badge & Hackle (Red, Free Size)",
+      price: "₹280",
+      mrp: "₹300",
+      rating: 4.5,
+      ctaText: "Add to Cart"
+    }
+  ];
 
   const testimonials = [
     { text: "The belt and badge I got were tough and looked perfect for parade day!", author: "Cadet A. Singh", rating: 5 },
     { text: "Fast delivery and excellent quality. Highly recommend for all cadets!", author: "Cadet R. Kumar", rating: 5 },
     { text: "Best place to buy NCC accessories. Everything is regulation-approved!", author: "Cadet P. Sharma", rating: 5 }
   ];
-
-  useEffect(() => {
-    const timer = setInterval(() => {
-      setTimeLeft(prev => {
-        if (prev.seconds > 0) {
-          return { ...prev, seconds: prev.seconds - 1 };
-        } else if (prev.minutes > 0) {
-          return { ...prev, minutes: prev.minutes - 1, seconds: 59 };
-        } else if (prev.hours > 0) {
-          return { hours: prev.hours - 1, minutes: 59, seconds: 59 };
-        }
-        return { hours: 23, minutes: 59, seconds: 59 };
-      });
-    }, 1000);
-    return () => clearInterval(timer);
-  }, []);
-
-  useEffect(() => {
-    const testimonialTimer = setInterval(() => {
-      setCurrentTestimonial((prev) => (prev + 1) % testimonials.length);
-    }, 5000);
-    return () => clearInterval(testimonialTimer);
-  }, [testimonials.length]);
 
   // Animate stats counter
   useEffect(() => {
@@ -86,11 +136,21 @@ function Home() {
   }, []);
 
   return (
-    <section className="home">
+    <section className="home" id="home">
+      <nav className="mobile-nav" aria-label="Quick section links">
+        <span className="mobile-nav_brand">NCC Store</span>
+        <div className="mobile-nav_links">
+          <a href="#home">Home</a>
+          <a href="#products">Products</a>
+          <a href="#why-us">Why Us</a>
+          <a href="#categories">Categories</a>
+          <a href="#contact">Contact</a>
+        </div>
+      </nav>
       <div className="hero">
         <h1>Welcome to NCC Accessories Store</h1>
         <p>Find the best quality NCC uniforms, badges, belts, parade items & more — all in one place.</p>
-        <a href="#products" className="btn">Explore Products</a>
+        {/* <a href="#products" className="btn">Explore Products</a> */}
       </div>
 
       {/* Special Offer Banner */}
@@ -100,8 +160,7 @@ function Home() {
           <h3>Get 15% OFF on Orders Above ₹2000</h3>
           <p>Use code: <strong>NCC2024</strong></p>
           <div className="countdown">
-            <span>Ends in: </span>
-            <span className="countdown-time">{String(timeLeft.hours).padStart(2, '0')}:{String(timeLeft.minutes).padStart(2, '0')}:{String(timeLeft.seconds).padStart(2, '0')}</span>
+            <span>Ends soon!</span>
           </div>
         </div>
       </div>
@@ -130,45 +189,20 @@ function Home() {
         <h2>Featured Accessories</h2>
         <div className="Card_component">
           <div className="products-row">
-
-            <Card
-              imageUrl={nccCapHome}
-              title="NCC Cap"
-              subtitle="Ncc Unisex-Adult Fabric Cap With Badge & Hackle (Red, Free Size)"
-              price="₹280"
-              mrp="300"
-              rating={4.5}
-              ctaText="Add to Cart"
-            />
-            <Card
-              imageUrl={nccBeltHome}
-              title="NCC Leather Belt"
-              subtitle="NCC Leather Belt for both Boys & Girls"
-              price="₹380"
-              mrp="400"
-              rating={3}
-              ctaText="Add to Cart"
-            />
-            <Card
-              imageUrl={nccDms}
-              title="DMS"
-              subtitle="NCC Uniform Boot for Boys & Girls"
-              price="₹1000"
-              mrp="1200"
-              rating={3.5}
-              ctaText="Add to Cart"
-            />
-            <Card
-              imageUrl={nccTshit}
-              title="Product title"
-              subtitle="NCC Uniform T-Shirt- White for Boys & Girls"
-              price="₹499"
-              mrp="600"
-              rating={4}
-              ctaText="Add to Cart"
-            />
+            {card_data.map((item, index) => (
+              <Card
+                key={`${item.title}-${index}`}
+                imageUrl={item.imageUrl}
+                title={item.title}
+                subtitle={item.subtitle}
+                price={item.price}
+                mrp={item.mrp}
+                rating={item.rating}
+                ctaText={item.ctaText}
+              />
+            ))}
           </div>
-          <div className="products-row">
+          {/* <div className="products-row">
 
             <Card
               imageUrl={nccCapHome}
@@ -206,7 +240,7 @@ function Home() {
               rating={4.3}
               ctaText="Add to Cart"
             />
-          </div>
+          </div> */}
         </div>
       </div>
 
@@ -220,7 +254,7 @@ function Home() {
       </div>
 
       {/* Featured Badges Section */}
-      <div className="featured-badges">
+      <div className="featured-badges" id="why-us">
         <h2>Why Cadets Trust Us</h2>
         <div className="badges-grid">
           <div className="badge-item">
@@ -252,26 +286,16 @@ function Home() {
         <div className="testimonial-carousel">
           <div className="testimonial-slide active">
             <div className="testimonial-stars">
-              {'★'.repeat(testimonials[currentTestimonial].rating)}{'☆'.repeat(5 - testimonials[currentTestimonial].rating)}
+              {'★'.repeat(testimonials[0].rating)}{'☆'.repeat(5 - testimonials[0].rating)}
             </div>
-            <blockquote>"{testimonials[currentTestimonial].text}"</blockquote>
-            <cite>— {testimonials[currentTestimonial].author}</cite>
-          </div>
-          <div className="testimonial-dots">
-            {testimonials.map((_, index) => (
-              <button
-                key={index}
-                className={`dot ${index === currentTestimonial ? 'active' : ''}`}
-                onClick={() => setCurrentTestimonial(index)}
-                aria-label={`View testimonial ${index + 1}`}
-              />
-            ))}
+            <blockquote>"{testimonials[0].text}"</blockquote>
+            <cite>— {testimonials[0].author}</cite>
           </div>
         </div>
       </div>
 
       {/* Quick Categories */}
-      <div className="quick-categories">
+      <div className="quick-categories" id="categories">
         <h2>Shop by Category</h2>
         <div className="categories-grid">
           <div className="category-card">
@@ -294,6 +318,15 @@ function Home() {
             <h3>Footwear</h3>
             <p>DMS Boots & More</p>
           </div>
+        </div>
+      </div>
+
+      <div className="contact-section" id="contact">
+        <h2>Need Assistance?</h2>
+        <p>Contact our support team for product recommendations, order tracking, or institutional bulk purchases.</p>
+        <div className="contact-actions">
+          <a href="/contact" className="btn">Contact Form</a>
+          <a href="tel:+919968362118" className="contact-link">Call +91 99683 62118</a>
         </div>
       </div>
 

@@ -187,7 +187,7 @@ function Home() {
 
       <div id="products" className="products">
         <h2>Featured Accessories</h2>
-        <div className="Card_component">
+        <div className="Card_container">
           <div className="products-row">
             {card_data.map((item, index) => (
               <Card
@@ -202,45 +202,27 @@ function Home() {
               />
             ))}
           </div>
-          {/* <div className="products-row">
-
-            <Card
-              imageUrl={nccCapHome}
-              title="NCC Badge"
-              subtitle="Official NCC Badge with Emblem for Uniform"
-              price="₹150"
-              mrp="200"
-              rating={4.5}
-              ctaText="Add to Cart"
-            />
-            <Card
-              imageUrl={nccBeltHome}
-              title="NCC Hackle"
-              subtitle="NCC Red Hackle for Cap - Official Accessory"
-              price="₹80"
-              mrp="100"
-              rating={4}
-              ctaText="Add to Cart"
-            />
-            <Card
-              imageUrl={nccDms}
-              title="NCC Shoulder Epaulettes"
-              subtitle="NCC Shoulder Epaulettes for Uniform - Pair"
-              price="₹250"
-              mrp="300"
-              rating={4.2}
-              ctaText="Add to Cart"
-            />
-            <Card
-              imageUrl={nccTshit}
-              title="NCC Beret"
-              subtitle="NCC Beret Cap for Cadets - Official Issue"
-              price="₹320"
-              mrp="350"
-              rating={4.3}
-              ctaText="Add to Cart"
-            />
-          </div> */}
+          <div>
+            {<br/>}
+            {<br/>}
+            {<br/>}
+          </div>
+          <div className="products-row">
+            {card_data.map((items, index) => {
+              return (
+                <Card
+                  key={`${items.title}-${index}`}
+                  imageUrl={items.imageUrl}
+                  title={items.title}
+                  subtitle={items.subtitle}
+                  price={items.price}
+                  mrp={items.mrp}
+                  rating={items.rating}
+                  ctaText={items.ctaText}
+                />
+              )
+            })}
+          </div>
         </div>
       </div>
 

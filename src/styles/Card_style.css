@@ -1,26 +1,3 @@
-/* ✅ Horizontal Scroll – 2 Rows */
-.scroll-container {
-  display: grid;
-  grid-template-rows: auto;  /* 2 rows */
-  grid-auto-flow: column;         /* Horizontal flowing columns */
-  overflow-x: auto;
-  overflow-y: hidden;
-  gap: 16px;
-  padding: 10px;
-  scrollbar-width: none;
-}
-
-.scroll-container::-webkit-scrollbar {
-  display: none;
-}
-
-/* ✅ Cards inside scroll */
-.scroll-container > * {
-  width: 220px;
-  flex: 0 0 auto;
-}
-
-/* ✅ Card Styles */
 .card {
   background: #fff;
   border: 1px solid #e5e7eb;
@@ -32,10 +9,6 @@
   transition: 0.2s;
 }
 
-.card:hover {
-  box-shadow: 0 6px 16px rgba(0,0,0,0.1);
-}
-
 .card-image img {
   width: 100%;
   height: 200px;
@@ -45,6 +18,9 @@
 
 .card-body {
   padding: 12px;
+  display: flex;
+  flex-direction: column;
+  flex: 1;             /* allow this section to flex & fill space */
 }
 
 .card-title {
@@ -73,6 +49,10 @@
 .card-price-mrp {
   text-decoration: line-through;
   color: gray;
+}
+
+.card-actions {
+  margin-top: auto;    /* pushes this section to bottom of card-body */
 }
 
 .btn {

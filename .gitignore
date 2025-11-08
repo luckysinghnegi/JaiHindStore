@@ -71,3 +71,4 @@ node_modules/
 # Long filename assets (temporary/placeholder files)
 src/Assets/*Logo design*.jpg
 src/Assets/*Jai Hind Store*.jpg
+src/Firebase_data_base/Firebase.js

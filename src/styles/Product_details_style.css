@@ -1,0 +1,390 @@
+/* Amazon-Style Product Details Page */
+
+.product-details-page {
+  font-family: "Amazon Ember", "Helvetica Neue", Helvetica, Arial, sans-serif;
+  background: #ffffff;
+  color: #0F1111;
+  min-height: 100vh;
+  padding: 20px;
+  max-width: 1400px;
+  margin: 0 auto;
+}
+
+.product-details-container {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 40px;
+  margin-bottom: 60px;
+  padding: 20px 0;
+}
+
+/* Product Image Section */
+.product-image-section {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.main-image-container {
+  background: #ffffff;
+  border: 1px solid #e5e7eb;
+  border-radius: 8px;
+  padding: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 500px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+}
+
+.main-product-image {
+  max-width: 100%;
+  max-height: 500px;
+  object-fit: contain;
+  border-radius: 4px;
+}
+
+/* Product Info Section */
+.product-info-section {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.product-title {
+  font-size: 1.75rem;
+  font-weight: 400;
+  line-height: 1.3;
+  color: #0F1111;
+  margin: 0;
+  letter-spacing: -0.5px;
+}
+
+/* Rating Section */
+.product-rating {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  flex-wrap: wrap;
+}
+
+.rating-stars {
+  font-size: 1.1rem;
+  color: #ffa41c;
+  letter-spacing: 2px;
+}
+
+.rating-text {
+  font-size: 0.875rem;
+  color: #007185;
+  font-weight: 400;
+}
+
+.rating-link {
+  font-size: 0.875rem;
+  color: #007185;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+.rating-link:hover {
+  text-decoration: underline;
+  color: #C7511F;
+}
+
+/* Price Section */
+.product-price-section {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  padding: 12px 0;
+  border-bottom: 1px solid #e5e7eb;
+}
+
+.price-current {
+  font-size: 1.75rem;
+  font-weight: 400;
+  color: #0F1111;
+  line-height: 1.2;
+}
+
+.price-mrp {
+  font-size: 0.875rem;
+  color: #565959;
+  text-decoration: line-through;
+  margin-left: 8px;
+}
+
+.price-save {
+  font-size: 0.875rem;
+  color: #CC0C39;
+  font-weight: 400;
+}
+
+/* Description */
+.product-description {
+  padding: 16px 0;
+  border-bottom: 1px solid #e5e7eb;
+}
+
+.product-description p {
+  font-size: 0.95rem;
+  line-height: 1.6;
+  color: #0F1111;
+  margin: 0;
+}
+
+/* Features */
+.product-features {
+  padding: 16px 0;
+  border-bottom: 1px solid #e5e7eb;
+}
+
+.product-features h3 {
+  font-size: 1rem;
+  font-weight: 700;
+  color: #0F1111;
+  margin: 0 0 12px 0;
+}
+
+.product-features ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.product-features li {
+  font-size: 0.95rem;
+  line-height: 1.8;
+  color: #0F1111;
+  padding-left: 20px;
+  position: relative;
+}
+
+.product-features li::before {
+  content: "•";
+  color: #007185;
+  font-weight: bold;
+  position: absolute;
+  left: 0;
+}
+
+/* Action Buttons */
+.product-actions {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  padding: 20px 0;
+}
+
+.btn-add-to-cart {
+  background: #FFD814;
+  border: none;
+  border-radius: 20px;
+  padding: 10px 20px;
+  font-size: 0.9rem;
+  font-weight: 400;
+  color: #0F1111;
+  cursor: pointer;
+  transition: background 0.2s ease;
+  font-family: "Amazon Ember", "Helvetica Neue", Helvetica, Arial, sans-serif;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+.btn-add-to-cart:hover {
+  background: #F7CA00;
+}
+
+.btn-buy-now {
+  background: #FFA41C;
+  border: none;
+  border-radius: 20px;
+  padding: 10px 20px;
+  font-size: 0.9rem;
+  font-weight: 400;
+  color: #0F1111;
+  cursor: pointer;
+  transition: background 0.2s ease;
+  font-family: "Amazon Ember", "Helvetica Neue", Helvetica, Arial, sans-serif;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+.btn-buy-now:hover {
+  background: #FA8900;
+}
+
+/* Shipping Info */
+.product-shipping-info {
+  padding: 16px;
+  background: #f5f5f5;
+  border-radius: 8px;
+  border: 1px solid #e5e7eb;
+}
+
+.shipping-text {
+  font-size: 0.875rem;
+  color: #0F1111;
+  margin: 0 0 8px 0;
+}
+
+.shipping-location {
+  font-size: 0.875rem;
+  color: #007185;
+  margin: 0;
+  cursor: pointer;
+}
+
+.shipping-location:hover {
+  text-decoration: underline;
+  color: #C7511F;
+}
+
+/* Specifications Section */
+.product-specifications {
+  background: #ffffff;
+  border: 1px solid #e5e7eb;
+  border-radius: 8px;
+  padding: 24px;
+  margin-top: 40px;
+}
+
+.product-specifications h2 {
+  font-size: 1.25rem;
+  font-weight: 400;
+  color: #0F1111;
+  margin: 0 0 20px 0;
+  padding-bottom: 12px;
+  border-bottom: 1px solid #e5e7eb;
+}
+
+.specs-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 16px;
+}
+
+.spec-item {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.spec-label {
+  font-size: 0.875rem;
+  font-weight: 700;
+  color: #565959;
+}
+
+.spec-value {
+  font-size: 0.95rem;
+  color: #0F1111;
+}
+
+/* Error State */
+.product-details-error {
+  text-align: center;
+  padding: 60px 20px;
+  max-width: 600px;
+  margin: 0 auto;
+}
+
+.product-details-error h2 {
+  font-size: 1.5rem;
+  font-weight: 400;
+  color: #0F1111;
+  margin: 0 0 12px 0;
+}
+
+.product-details-error p {
+  font-size: 1rem;
+  color: #565959;
+  margin: 0;
+}
+
+/* Responsive Design */
+@media (max-width: 1024px) {
+  .product-details-container {
+    grid-template-columns: 1fr;
+    gap: 30px;
+  }
+
+  .main-image-container {
+    min-height: 400px;
+  }
+
+  .main-product-image {
+    max-height: 400px;
+  }
+}
+
+@media (max-width: 768px) {
+  .product-details-page {
+    padding: 12px;
+  }
+
+  .product-details-container {
+    gap: 24px;
+    padding: 12px 0;
+  }
+
+  .product-title {
+    font-size: 1.5rem;
+  }
+
+  .main-image-container {
+    min-height: 300px;
+    padding: 16px;
+  }
+
+  .main-product-image {
+    max-height: 300px;
+  }
+
+  .price-current {
+    font-size: 1.5rem;
+  }
+
+  .specs-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .product-actions {
+    padding: 16px 0;
+  }
+
+  .btn-add-to-cart,
+  .btn-buy-now {
+    padding: 12px 20px;
+    font-size: 1rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .product-title {
+    font-size: 1.25rem;
+  }
+
+  .main-image-container {
+    min-height: 250px;
+    padding: 12px;
+  }
+
+  .main-product-image {
+    max-height: 250px;
+  }
+
+  .price-current {
+    font-size: 1.25rem;
+  }
+
+  .product-rating {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 8px;
+  }
+
+  .product-specifications {
+    padding: 16px;
+  }
+}
+

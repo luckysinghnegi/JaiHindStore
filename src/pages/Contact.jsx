@@ -4,6 +4,9 @@ import { db } from "../Firebase_data_base/Firebase";
 import { collection, addDoc } from "firebase/firestore";
 
 function Contact() {
+  useEffect(() => {
+    window.scrollTo({ top: 0, behavior: "smooth" })
+  }, [])
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [message, setMessage] = useState("");
@@ -57,7 +60,7 @@ function Contact() {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    console.log("Form submitted!", { name, email, message, id});
+    console.log("Form submitted!", { name, email, message, id });
 
     // Basic validation
     if (!name.trim() || !email.trim() || !message.trim()) {

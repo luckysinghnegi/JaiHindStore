@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { NavLink } from "react-router-dom";
 import "../styles/Header_style.css";
+import logo from "../Assets/Jai_Hind_Store.jpg"
 
 function Navbar() {
   const [search, setSearch] = useState("")
@@ -13,6 +14,7 @@ function Navbar() {
     <nav className="navbar">
       <div className="brand-logo">
         <div className="logo">Jai Hind Store</div>
+        <img src={logo} alt="logo" className="logo-img" />
       </div>
 
       <form className="search" role="search" action="#" method="get" onSubmit={handleSubmit}>

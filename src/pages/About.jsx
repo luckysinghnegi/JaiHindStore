@@ -1,7 +1,10 @@
-import React from "react";
+import React,{useEffect} from "react";
 import "../styles/About_style.css";
 
 function About() {
+  useEffect(() => {
+    window.scrollTo({ top: 0, behavior: "smooth" })
+  }, [])
   return (
     <section className="about">
       <div className="about-hero">

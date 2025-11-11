@@ -1,87 +1,22 @@
 import React, { useEffect } from "react";
+import { Link } from "react-router-dom";
 import Card from "./Card.jsx";
 import "../styles/Home_style.css";
-import nccCapHome from "../Assets/NCC_Cap_home.jpg";
-import nccBeltHome from "../Assets/NCC-Belt-Leather.jpg";
-import nccDms from "../Assets/NCC_DMS.jpg";
-import nccTshit from "../Assets/NCC_T-shit.jpg";
+
+import Products_data from "../Product_data/Products_data.js"
 
 function Home() {
+  useEffect(() => {
+    window.scrollTo({ top: 0, behavior: "smooth" })
+  }, [])
 
-  const card_data = [
-    {
-      imageUrl: nccCapHome,
-      title: "NCC Cap",
-      subtitle: "Ncc Unisex-Adult Fabric Cap With Badge & Hackle (Red, Free Size)",
-      price: "₹280",
-      mrp: "₹300",
-      rating: 4.5,
-      ctaText: "Add to Cart"
-    },
-    {
-      imageUrl: nccBeltHome,
-      title: "NCC Leather Belt",
-      subtitle: "NCC Leather Belt for both Boys & Girls",
-      price: "₹380",
-      mrp: "₹400",
-      rating: 3,
-      ctaText: "Add to Cart"
-    },
-    {
-      imageUrl: nccTshit,
-      title: "NCC T-Shirt",
-      subtitle: "NCC Uniform T-Shirt- White for Boys & Girls",
-      price: "₹499",
-      mrp: "₹600",
-      rating: 4,
-      ctaText: "Add to Cart"
-    },
-    {
-      imageUrl: nccCapHome,
-      title: "NCC Cap",
-      subtitle: "Ncc Unisex-Adult Fabric Cap With Badge & Hackle (Red, Free Size)",
-      price: "₹280",
-      mrp: "₹300",
-      rating: 4.5,
-      ctaText: "Add to Cart"
-    },
-    {
-      imageUrl: nccBeltHome,
-      title: "NCC Leather Belt",
-      subtitle: "NCC Leather Belt for both Boys & Girls",
-      price: "₹380",
-      mrp: "₹400",
-      rating: 3,
-      ctaText: "Add to Cart"
-    },
-    {
-      imageUrl: nccDms,
-      title: "DMS",
-      subtitle: "NCC Uniform Boot for Boys & Girls",
-      price: "₹1000",
-      mrp: "₹1200",
-      rating: 3.5,
-      ctaText: "Add to Cart"
-    },
-    {
-      imageUrl: nccTshit,
-      title: "NCC T-Shirt",
-      subtitle: "NCC Uniform T-Shirt- White for Boys & Girls",
-      price: "₹499",
-      mrp: "₹600",
-      rating: 4,
-      ctaText: "Add to Cart"
-    },
-    {
-      imageUrl: nccCapHome,
-      title: "NCC Cap",
-      subtitle: "Ncc Unisex-Adult Fabric Cap With Badge & Hackle (Red, Free Size)",
-      price: "₹280",
-      mrp: "₹300",
-      rating: 4.5,
-      ctaText: "Add to Cart"
-    }
-  ];
+  const card_data = Products_data;
+  const featuredProducts = card_data.slice(0, 8);
+  const newProducts = card_data.slice(8);
+  // Premium collection - mix of top-rated products
+  const premiumProducts = card_data.filter((item, index) => 
+    item.rating >= 4.5 || item.badge === "Top Rated" || item.badge === "Premium" || item.badge === "Editor's Pick"
+  ).slice(0, 6);
 
   const testimonials = [
     { text: "The belt and badge I got were tough and looked perfect for parade day!", author: "Cadet A. Singh", rating: 5 },
@@ -140,11 +75,11 @@ function Home() {
       <nav className="mobile-nav" aria-label="Quick section links">
         <span className="mobile-nav_brand">NCC Store</span>
         <div className="mobile-nav_links">
-          <a href="#home">Home</a>
-          <a href="#products">Products</a>
-          <a href="#why-us">Why Us</a>
+          <a href="/">Home</a>
+          <a href="/About">About</a>
+          <a href="/Services">Services</a>
           <a href="#categories">Categories</a>
-          <a href="#contact">Contact</a>
+          <a href="/contact">Contact</a>
         </div>
       </nav>
       <div className="hero">
@@ -186,10 +121,18 @@ function Home() {
       </div>
 
       <div id="products" className="products">
-        <h2>Featured Accessories</h2>
+        <div className="products-header">
+          <h2>Featured Accessories</h2>
+          <div className="products-tags">
+            <span className="tag active">Best Sellers</span>
+            <span className="tag">New Arrivals</span>
+            <span className="tag">Cadet Favorites</span>
+            <span className="tag">Limited Stock</span>
+          </div>
+        </div>
         <div className="Card_container">
           <div className="products-row">
-            {card_data.map((item, index) => (
+            {featuredProducts.map((item, index) => (
               <Card
                 key={`${item.title}-${index}`}
                 imageUrl={item.imageUrl}
@@ -198,33 +141,105 @@ function Home() {
                 price={item.price}
                 mrp={item.mrp}
                 rating={item.rating}
+                reviews={item.reviews}
+                badge={item.badge}
                 ctaText={item.ctaText}
+                productIndex={index}
               />
             ))}
           </div>
-          <div>
-            {<br/>}
-            {<br/>}
-            {<br/>}
+        </div>
+      </div>
+
+      {newProducts.length > 0 && (
+        <div className="new-products-section" id="new-arrivals">
+          <div className="new-products-header">
+            <div>
+              <p className="section-eyebrow">Fresh For Parade Season</p>
+              <h3>New Arrival Essentials</h3>
+            </div>
+            <a href="#contact" className="new-products-cta">Need custom kits? Talk to us →</a>
           </div>
-          <div className="products-row">
-            {card_data.map((items, index) => {
+          <div className="new-products-grid">
+            {newProducts.map((item, index) => {
+              const actualIndex = index + featuredProducts.length;
               return (
                 <Card
-                  key={`${items.title}-${index}`}
-                  imageUrl={items.imageUrl}
-                  title={items.title}
-                  subtitle={items.subtitle}
-                  price={items.price}
-                  mrp={items.mrp}
-                  rating={items.rating}
-                  ctaText={items.ctaText}
+                  key={`${item.title}-${actualIndex}`}
+                  imageUrl={item.imageUrl}
+                  title={item.title}
+                  subtitle={item.subtitle}
+                  price={item.price}
+                  mrp={item.mrp}
+                  rating={item.rating}
+                  reviews={item.reviews}
+                  badge={item.badge}
+                  ctaText={item.ctaText}
+                  productIndex={actualIndex}
                 />
               )
             })}
           </div>
         </div>
-      </div>
+      )}
+
+      {premiumProducts.length > 0 && (
+        <div className="premium-collection-section" id="premium">
+          <div className="premium-header">
+            <div className="premium-header-content">
+              <span className="premium-badge">⭐ Premium Collection</span>
+              <h2>Top-Rated Cadet Essentials</h2>
+              <p>Handpicked by our team for exceptional quality & cadet satisfaction</p>
+            </div>
+          </div>
+          <div className="premium-products-container">
+            {premiumProducts.map((item, index) => {
+              const actualIndex = card_data.findIndex(p => p.title === item.title);
+              return (
+                <div key={`premium-${item.title}-${index}`} className="premium-card">
+                  <div className="premium-card-image">
+                    <img src={item.imageUrl} alt={item.title} />
+                    {item.badge && (
+                      <span className="premium-card-badge">{item.badge}</span>
+                    )}
+                  </div>
+                  <div className="premium-card-content">
+                    <div className="premium-card-rating">
+                      <span className="premium-stars">{'★'.repeat(Math.round(item.rating))}{'☆'.repeat(5 - Math.round(item.rating))}</span>
+                      <span className="premium-rating-text">{item.rating}</span>
+                      <span className="premium-reviews">({item.reviews} reviews)</span>
+                    </div>
+                    <h3 className="premium-card-title">{item.title}</h3>
+                    <p className="premium-card-subtitle">{item.subtitle}</p>
+                    <div className="premium-card-price">
+                      <span className="premium-price-current">{item.price}</span>
+                      {item.mrp && item.mrp !== item.price && (
+                        <span className="premium-price-mrp">{item.mrp}</span>
+                      )}
+                    </div>
+                    <div className="premium-card-actions">
+                      <button 
+                        className="premium-btn-primary"
+                        onClick={() => {
+                          const phone = "919968362118";
+                          const message = `Hi, I want to order: ${item.title} - ${item.price}`;
+                          const url = `https://web.whatsapp.com/send?phone=${phone}&text=${encodeURIComponent(message)}`;
+                          window.open(url, "_blank");
+                        }}
+                      >
+                        Order Now
+                      </button>
+                      <Link to={`/product-details/${actualIndex}`} className="premium-btn-secondary">
+                        View Details
+                      </Link>
+                    </div>
+                  </div>
+                </div>
+              );
+            })}
+          </div>
+        </div>
+      )}
 
       <div className="why-us">
         <h2>Why Choose Us</h2>

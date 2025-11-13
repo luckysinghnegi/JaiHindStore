@@ -1,390 +1,303 @@
-/* Amazon-Style Product Details Page */
-
+/* -------------------------------
+   Product Details Page Layout
+--------------------------------*/
 .product-details-page {
-  font-family: "Amazon Ember", "Helvetica Neue", Helvetica, Arial, sans-serif;
-  background: #ffffff;
-  color: #0F1111;
-  min-height: 100vh;
-  padding: 20px;
-  max-width: 1400px;
-  margin: 0 auto;
-}
-
-.product-details-container {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 40px;
-  margin-bottom: 60px;
+  font-family: "Poppins", sans-serif;
+  color: #222;
+  background-color: #fff;
   padding: 20px 0;
 }
 
-/* Product Image Section */
+.product-details-container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 40px;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 20px;
+}
+
+/* -------------------------------
+   Left Section - Images
+--------------------------------*/
 .product-image-section {
   display: flex;
   flex-direction: column;
-  gap: 16px;
+  align-items: center;
 }
 
+/* Main Image */
 .main-image-container {
-  background: #ffffff;
-  border: 1px solid #e5e7eb;
-  border-radius: 8px;
-  padding: 20px;
   display: flex;
+  flex-direction: column;
   align-items: center;
-  justify-content: center;
-  min-height: 500px;
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+  width: 100%;
+  max-width: 520px;
+  margin: 0 auto;
 }
 
 .main-product-image {
-  max-width: 100%;
-  max-height: 500px;
+  width: 100%;
+  max-width: 480px;
+  height: auto;
+  max-height: 480px;
   object-fit: contain;
-  border-radius: 4px;
+  border-radius: 8px;
+  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.08);
+  margin-bottom: 16px;
 }
 
-/* Product Info Section */
-.product-info-section {
+/* Thumbnails */
+.thumbnails {
   display: flex;
-  flex-direction: column;
-  gap: 16px;
+  justify-content: center;
+  align-items: center;
+  gap: 8px;
+  overflow-x: auto;
+  padding: 8px 0;
+  scrollbar-width: thin;
+  scrollbar-color: #ccc transparent;
+}
+
+.thumbnail {
+  width: 70px;
+  height: 70px;
+  object-fit: cover;
+  border-radius: 6px;
+  border: 2px solid transparent;
+  cursor: pointer;
+  opacity: 0.85;
+  transition: transform 0.15s ease, opacity 0.15s ease, border-color 0.15s ease;
+}
+
+.thumbnail:hover {
+  transform: scale(1.05);
+  opacity: 1;
+}
+
+.thumbnail.active {
+  border-color: #0b66ff;
+  opacity: 1;
+  box-shadow: 0 4px 10px rgba(11, 102, 255, 0.12);
+}
+
+/* -------------------------------
+   Right Section - Product Info
+--------------------------------*/
+.product-info-section {
+  flex: 1;
+  max-width: 500px;
 }
 
 .product-title {
-  font-size: 1.75rem;
-  font-weight: 400;
-  line-height: 1.3;
-  color: #0F1111;
-  margin: 0;
-  letter-spacing: -0.5px;
+  font-size: 1.8rem;
+  font-weight: 600;
+  margin-bottom: 8px;
 }
 
-/* Rating Section */
 .product-rating {
   display: flex;
   align-items: center;
-  gap: 12px;
-  flex-wrap: wrap;
+  gap: 8px;
+  margin-bottom: 12px;
 }
 
 .rating-stars {
-  font-size: 1.1rem;
-  color: #ffa41c;
-  letter-spacing: 2px;
+  color: #ffb400;
+  font-size: 1.2rem;
 }
 
 .rating-text {
-  font-size: 0.875rem;
-  color: #007185;
-  font-weight: 400;
+  color: #444;
+  font-size: 0.9rem;
 }
 
 .rating-link {
-  font-size: 0.875rem;
   color: #007185;
+  font-size: 0.9rem;
   text-decoration: none;
-  cursor: pointer;
 }
 
 .rating-link:hover {
   text-decoration: underline;
-  color: #C7511F;
 }
 
-/* Price Section */
+/* -------------------------------
+   Price Section
+--------------------------------*/
 .product-price-section {
-  display: flex;
-  flex-direction: column;
-  gap: 8px;
-  padding: 12px 0;
-  border-bottom: 1px solid #e5e7eb;
+  margin: 12px 0;
+  font-size: 1.2rem;
+  font-weight: 500;
 }
 
 .price-current {
-  font-size: 1.75rem;
-  font-weight: 400;
-  color: #0F1111;
-  line-height: 1.2;
+  color: #b12704;
+  font-size: 1.6rem;
+  font-weight: 600;
+  margin-right: 12px;
 }
 
 .price-mrp {
-  font-size: 0.875rem;
-  color: #565959;
   text-decoration: line-through;
-  margin-left: 8px;
+  color: #565959;
+  margin-right: 8px;
 }
 
 .price-save {
-  font-size: 0.875rem;
-  color: #CC0C39;
-  font-weight: 400;
+  color: #007600;
+  font-weight: 500;
 }
 
-/* Description */
-.product-description {
-  padding: 16px 0;
-  border-bottom: 1px solid #e5e7eb;
-}
-
+/* -------------------------------
+   Product Description & Features
+--------------------------------*/
 .product-description p {
-  font-size: 0.95rem;
+  color: #333;
+  margin-bottom: 16px;
   line-height: 1.6;
-  color: #0F1111;
-  margin: 0;
-}
-
-/* Features */
-.product-features {
-  padding: 16px 0;
-  border-bottom: 1px solid #e5e7eb;
 }
 
 .product-features h3 {
-  font-size: 1rem;
-  font-weight: 700;
-  color: #0F1111;
-  margin: 0 0 12px 0;
+  font-size: 1.2rem;
+  margin-bottom: 8px;
 }
 
 .product-features ul {
-  list-style: none;
-  padding: 0;
-  margin: 0;
+  list-style: disc;
+  margin-left: 20px;
+  color: #444;
+  line-height: 1.6;
 }
 
-.product-features li {
-  font-size: 0.95rem;
-  line-height: 1.8;
-  color: #0F1111;
-  padding-left: 20px;
-  position: relative;
-}
-
-.product-features li::before {
-  content: "•";
-  color: #007185;
-  font-weight: bold;
-  position: absolute;
-  left: 0;
-}
-
-/* Action Buttons */
+/* -------------------------------
+   Buttons
+--------------------------------*/
 .product-actions {
   display: flex;
-  flex-direction: column;
   gap: 12px;
-  padding: 20px 0;
+  margin: 20px 0;
+}
+
+.btn-add-to-cart,
+.btn-buy-now {
+  flex: 1;
+  padding: 12px 20px;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  font-size: 1rem;
+  font-weight: 500;
+  transition: all 0.2s ease-in-out;
 }
 
 .btn-add-to-cart {
-  background: #FFD814;
-  border: none;
-  border-radius: 20px;
-  padding: 10px 20px;
-  font-size: 0.9rem;
-  font-weight: 400;
-  color: #0F1111;
-  cursor: pointer;
-  transition: background 0.2s ease;
-  font-family: "Amazon Ember", "Helvetica Neue", Helvetica, Arial, sans-serif;
-  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  background-color: #ffd814;
+  color: #111;
 }
 
 .btn-add-to-cart:hover {
-  background: #F7CA00;
+  background-color: #f7ca00;
 }
 
 .btn-buy-now {
-  background: #FFA41C;
-  border: none;
-  border-radius: 20px;
-  padding: 10px 20px;
-  font-size: 0.9rem;
-  font-weight: 400;
-  color: #0F1111;
-  cursor: pointer;
-  transition: background 0.2s ease;
-  font-family: "Amazon Ember", "Helvetica Neue", Helvetica, Arial, sans-serif;
-  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  background-color: #ffa41c;
+  color: #fff;
 }
 
 .btn-buy-now:hover {
-  background: #FA8900;
+  background-color: #f08804;
 }
 
-/* Shipping Info */
+/* -------------------------------
+   Shipping Info
+--------------------------------*/
 .product-shipping-info {
-  padding: 16px;
-  background: #f5f5f5;
-  border-radius: 8px;
-  border: 1px solid #e5e7eb;
+  color: #333;
+  font-size: 0.95rem;
+  margin-top: 8px;
 }
 
 .shipping-text {
-  font-size: 0.875rem;
-  color: #0F1111;
-  margin: 0 0 8px 0;
+  margin-bottom: 4px;
 }
 
-.shipping-location {
-  font-size: 0.875rem;
-  color: #007185;
-  margin: 0;
-  cursor: pointer;
-}
-
-.shipping-location:hover {
-  text-decoration: underline;
-  color: #C7511F;
-}
-
-/* Specifications Section */
+/* -------------------------------
+   Specifications Section
+--------------------------------*/
 .product-specifications {
-  background: #ffffff;
-  border: 1px solid #e5e7eb;
-  border-radius: 8px;
-  padding: 24px;
-  margin-top: 40px;
+  max-width: 1000px;
+  margin: 40px auto;
+  padding: 20px;
+  border-top: 1px solid #eee;
 }
 
 .product-specifications h2 {
-  font-size: 1.25rem;
-  font-weight: 400;
-  color: #0F1111;
-  margin: 0 0 20px 0;
-  padding-bottom: 12px;
-  border-bottom: 1px solid #e5e7eb;
+  font-size: 1.4rem;
+  font-weight: 600;
+  margin-bottom: 16px;
 }
 
 .specs-grid {
   display: grid;
-  grid-template-columns: repeat(2, 1fr);
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
   gap: 16px;
 }
 
 .spec-item {
-  display: flex;
-  flex-direction: column;
-  gap: 4px;
+  background: #f9f9f9;
+  padding: 12px 16px;
+  border-radius: 6px;
 }
 
 .spec-label {
-  font-size: 0.875rem;
-  font-weight: 700;
-  color: #565959;
+  font-weight: 600;
+  color: #555;
 }
 
 .spec-value {
-  font-size: 0.95rem;
-  color: #0F1111;
+  display: block;
+  color: #333;
+  margin-top: 4px;
 }
 
-/* Error State */
+/* -------------------------------
+   Error Message
+--------------------------------*/
 .product-details-error {
   text-align: center;
-  padding: 60px 20px;
-  max-width: 600px;
-  margin: 0 auto;
+  padding: 40px;
 }
 
 .product-details-error h2 {
-  font-size: 1.5rem;
-  font-weight: 400;
-  color: #0F1111;
-  margin: 0 0 12px 0;
+  font-size: 1.6rem;
+  margin-bottom: 10px;
+  color: #b12704;
 }
 
-.product-details-error p {
-  font-size: 1rem;
-  color: #565959;
-  margin: 0;
-}
-
-/* Responsive Design */
-@media (max-width: 1024px) {
+/* -------------------------------
+   Responsive Design
+--------------------------------*/
+@media (max-width: 768px) {
   .product-details-container {
-    grid-template-columns: 1fr;
+    flex-direction: column;
+    align-items: center;
     gap: 30px;
   }
 
-  .main-image-container {
-    min-height: 400px;
+  .product-info-section {
+    max-width: 100%;
+    padding: 0 20px;
   }
 
   .main-product-image {
-    max-height: 400px;
+    max-width: 340px;
+    max-height: 340px;
+  }
+
+  .thumbnail {
+    width: 56px;
+    height: 56px;
   }
 }
-
-@media (max-width: 768px) {
-  .product-details-page {
-    padding: 12px;
-  }
-
-  .product-details-container {
-    gap: 24px;
-    padding: 12px 0;
-  }
-
-  .product-title {
-    font-size: 1.5rem;
-  }
-
-  .main-image-container {
-    min-height: 300px;
-    padding: 16px;
-  }
-
-  .main-product-image {
-    max-height: 300px;
-  }
-
-  .price-current {
-    font-size: 1.5rem;
-  }
-
-  .specs-grid {
-    grid-template-columns: 1fr;
-  }
-
-  .product-actions {
-    padding: 16px 0;
-  }
-
-  .btn-add-to-cart,
-  .btn-buy-now {
-    padding: 12px 20px;
-    font-size: 1rem;
-  }
-}
-
-@media (max-width: 480px) {
-  .product-title {
-    font-size: 1.25rem;
-  }
-
-  .main-image-container {
-    min-height: 250px;
-    padding: 12px;
-  }
-
-  .main-product-image {
-    max-height: 250px;
-  }
-
-  .price-current {
-    font-size: 1.25rem;
-  }
-
-  .product-rating {
-    flex-direction: column;
-    align-items: flex-start;
-    gap: 8px;
-  }
-
-  .product-specifications {
-    padding: 16px;
-  }
-}
-

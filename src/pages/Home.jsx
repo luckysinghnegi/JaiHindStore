@@ -77,7 +77,7 @@ function Home() {
         <div className="mobile-nav_links">
           <a href="/">Home</a>
           <a href="/About">About</a>
-          <a href="/Services">Services</a>
+          <a href="/Services">Serumvices</a>
           <a href="#categories">Categories</a>
           <a href="/contact">Contact</a>
         </div>

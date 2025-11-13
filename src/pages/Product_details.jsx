@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react'
+import React, { useEffect, useState } from 'react'
 import Products_data from '../Product_data/Products_data.js'
 import { useParams } from 'react-router-dom'
 import '../styles/Product_details_style.css'
@@ -7,6 +7,15 @@ function Product_details() {
     const { id } = useParams()
     const index = Number(id)
     const product = Number.isInteger(index) ? Products_data[index] : undefined
+
+    if (!product) {
+        return (
+            <div className="product-details-error">
+                <h2>Product not found</h2>
+                <p>The product you're looking for doesn't exist.</p>
+            </div>
+        )
+    }
 
     const rounded = Math.max(0, Math.min(5, Math.round(product?.rating || 0)))
     const stars = '★★★★★'.slice(0, rounded) + '☆☆☆☆☆'.slice(0, 5 - rounded)
@@ -22,14 +31,25 @@ function Product_details() {
         window.open(url, "_blank")
     }
 
-    if (!product) {
-        return (
-            <div className="product-details-error">
-                <h2>Product not found</h2>
-                <p>The product you're looking for doesn't exist.</p>
-            </div>
-        )
-    }
+    const [activeIndex, setActiveIndex] = useState(0)
+
+    // Normalize images into an array
+    const images = (product && product.All_images && product.All_images.length)
+        ? product.All_images
+        : product && product.imageUrl
+            ? [product.imageUrl]
+            : []
+
+    // When product (or images) change, reset or clamp activeIndex
+    useEffect(() => {
+        // if there are no images set 0, else clamp to valid index
+        setActiveIndex(prev => {
+            if (images.length === 0) return 0
+            return Math.min(prev ?? 0, images.length - 1)
+
+        })
+        console.log("hello")
+    }, [product?.id, images.length])
 
     return (
         <div className="product-details-page">
@@ -37,7 +57,35 @@ function Product_details() {
                 {/* Left Side - Product Images */}
                 <div className="product-image-section">
                     <div className="main-image-container">
-                        <img src={product.imageUrl} alt={product.title} className="main-product-image" />
+                        {images.length > 0 ? (
+                            <img
+                                className="main-product-image"
+                                src={images[activeIndex]}
+                                alt={`${product.title} - ${activeIndex + 1}`}
+                            />
+                        ) : (
+                            <div className="no-image-placeholder">No image available</div>
+                        )}
+
+                        <div className="thumbnails" role="list" aria-label="Product thumbnails">
+                            {images.map((img, i) => (
+                                <img
+                                    key={i}
+                                    id={`thumb-${i}`}
+                                    src={img}
+                                    alt={`${product.title} thumbnail ${i + 1}`}
+                                    className={`thumbnail ${i === activeIndex ? "active" : ""}`}
+                                    onClick={() => setActiveIndex(i)}
+                                    onKeyDown={(e) => {
+                                        if (e.key === "Enter" || e.key === " " || e.key === "Spacebar" || e.key === "Space")
+                                            setActiveIndex(i)
+                                    }}
+                                    tabIndex={0}
+                                    role="button"
+                                    aria-pressed={i === activeIndex}
+                                />
+                            ))}
+                        </div>
                     </div>
                 </div>
 
@@ -47,7 +95,7 @@ function Product_details() {
 
                     <div className="product-rating">
                         <span className="rating-stars">{stars}</span>
-                        <span className="rating-text">{product.rating} out of 5</span>
+                        <span className="rating-text">{product.rating ?? 0} out of 5</span>
                         <a href="#reviews" className="rating-link">See all reviews</a>
                     </div>
 
@@ -58,8 +106,8 @@ function Product_details() {
                                 <span className="price-mrp">{product.mrp}</span>
                                 <span className="price-save">
                                     {(() => {
-                                        const mrpValue = parseInt(product.mrp.replace(/[₹,]/g, '')) || 0
-                                        const priceValue = parseInt(product.price.replace(/[₹,]/g, '')) || 0
+                                        const mrpValue = parseInt((product.mrp || '').replace(/[₹,]/g, '')) || 0
+                                        const priceValue = parseInt((product.price || '').replace(/[₹,]/g, '')) || 0
                                         const savings = mrpValue - priceValue
                                         const discount = mrpValue > 0 ? Math.round((savings / mrpValue) * 100) : 0
                                         return savings > 0 ? `You Save: ₹${savings} (${discount}%)` : ''

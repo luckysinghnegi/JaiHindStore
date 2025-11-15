@@ -5,7 +5,7 @@ import logo from "../Assets/Jai_Hind_Store.jpg"
 
 function Navbar() {
   const [search, setSearch] = useState("")
-  function handleSubmit(e){
+  function handleSubmit(e) {
     e.preventDefault()
     setSearch("")
   }
@@ -34,6 +34,9 @@ function Navbar() {
         </li>
         <li>
           <NavLink to="/contact" className={({ isActive }) => (isActive ? "active" : "")}>Contact</NavLink>
+        </li>
+        <li>
+          <NavLink to="/Login_page" className={({ isActive }) => (isActive ? "active" : "")}>{"Sign UP"} </NavLink>
         </li>
       </ul>
     </nav>

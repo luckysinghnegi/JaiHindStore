@@ -3,8 +3,8 @@
   font-family: Arial, sans-serif;
   color: #2f3b52;
   padding: 40px 20px;
-  background: radial-gradient(900px 600px at 10% -10%, rgba(13,110,253,0.08) 0%, rgba(255,255,255,0) 60%),
-              linear-gradient(180deg, rgba(255,255,255,0.02) 0%, rgba(255,255,255,0.02) 100%);
+  background: radial-gradient(900px 600px at 10% -10%, rgba(13, 110, 253, 0.08) 0%, rgba(255, 255, 255, 0) 60%),
+    linear-gradient(180deg, rgba(255, 255, 255, 0.02) 0%, rgba(255, 255, 255, 0.02) 100%);
 }
 
 .services-hero {
@@ -46,7 +46,7 @@
 }
 
 .service-card:hover {
-  box-shadow: 0 6px 16px rgba(0,0,0,0.08);
+  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.08);
 }
 
 .service-card h3 {
@@ -84,6 +84,7 @@
 .cta {
   text-align: center;
   margin-bottom: 50px;
+  width: 97.35%;
 }
 
 .cta .btn {
@@ -139,4 +140,3 @@
     width: 92%;
   }
 }
-
